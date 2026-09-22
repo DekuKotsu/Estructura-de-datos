@@ -1,3 +1,5 @@
+#introuccion
+#arrays de 2 dimensiones
 import os, math
 import numpy as np
 os.system("cls")
