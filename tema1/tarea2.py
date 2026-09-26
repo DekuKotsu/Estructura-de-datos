@@ -19,10 +19,21 @@ for i in range(n):
 numerador = n * suma_XY - X_suma * Y_suma
 
 denominador = math.sqrt(
-    (n * suma_X2 - X_suma ** 2) *
-    (n * suma_Y2 - Y_suma ** 2)
+    (n * suma_X2 - X_suma ** 2) * (n * suma_Y2 - Y_suma ** 2)
 )
 
-division = numerador / denominador
+b = (n * suma_XY -(X_suma * Y_suma)) /( n*suma_X2 - pow(X_suma, 2))
+a = (Y_suma/n)-b*(X_suma/n)
+r = numerador / denominador
+r2 = pow(r,2)
+nuevax= 800
+Y = a +b*nuevax
+t = ((r*math.sqrt(n-2))/math.sqrt(1-pow(r,2)))
 
-print(f"Coeficiente de correlacion: {division:.3f}")
+print(f"Coeficiente de correlacion: {r:.3f}")
+print(f"Coeficiente de correlacion^2 {r2:.3f}")
+print(f"prueba del valor estadistico: {t:.3f}")
+print(f"Pendinete b: {b:.5f}")
+print(f"Interseccion a: {a}")
+print(f"Y´={a}+ {b:.5f}X")
+print(f"y´= {Y:.2f}")
