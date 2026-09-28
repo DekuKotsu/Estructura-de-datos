@@ -3,7 +3,7 @@ import os, random
 import numpy as np
 os.system("cls")
 calificaciones = np.random.randint(0,101, (30,6))
-class promedios:
+class Promedios:
     def __init__(self, calificaciones):
         self.prom_alumno = 0
         self.prom_materia = 0
@@ -16,6 +16,7 @@ class promedios:
             "Cultura Empresarial",
             "Investigación"
         ]
+
     def alumno (self):
         self.prom_alumno = np.mean(self.cali, axis=1)
         resultado = []
@@ -29,9 +30,128 @@ class promedios:
         for i,materia in enumerate(self.materias):
             prom.append(f"El promedio de la materia {materia} es de: {self.prom_materia[i]:.2f}")
         return "\n" .join(prom)
+    def cali_max_o_min(self):
+
+        max_cali = np.max(self.cali, axis=0)
+        min_cali = np.min(self.cali, axis=0)
+        resultado = []
+        for i, materia in enumerate(self.materias):
+            resultado.append(
+                f"{materia}: calificación máxima = {max_cali[i]}, "
+            f"calificación mínima = {min_cali[i]}"
+        )
+        return "\n".join(resultado)
+
+    def alumnos_destacados(self):
+
+        self.prom_alumno = np.mean(self.cali, axis=1)
+
+        resultado = []
+
+        for i in range(30):
+            if self.prom_alumno[i] >= 90:
+                resultado.append(
+                    f"El alumno {i+1} tiene un promedio de: "
+                    f"{self.prom_alumno[i]:.2f}"
+                )
+
+        if len(resultado) == 0:
+            return "No hay alumnos con promedio mayor o igual a 90."
+
+        return "\n".join(resultado)
+    def materias_reprobadas(self):
+
+        self.prom_materia = np.mean(self.cali, axis=0)
+
+        resultado = []
+
+        for i, materia in enumerate(self.materias):
+            if self.prom_materia[i] < 70:
+                resultado.append(
+                    f"La materia {materia} tiene un promedio de: "
+                    f"{self.prom_materia[i]:.2f}"
+                )
+
+        if len(resultado) == 0:
+            return "No hay materias con promedio menor a 70."
+
+        return "\n".join(resultado)
     
-promedio =promedios(calificaciones)
+    def ordenar_alumnos(self):
+        prom_alumno = np.mean(self.cali, axis=1) 
+        indices = np.argsort(prom_alumno)[::-1] 
+        resultado = []
+        for i in indices:
+            resultado.append( f"Alumno {i + 1}: {prom_alumno[i]:.2f}" ) 
+        return "\n".join(resultado)
+    def desviacion_estandar(self):
+        desviacion = np.std(self.cali, axis=0) 
+        resultado = []
+        for i, materia in enumerate(self.materias): 
+            resultado.append( f"{materia}: {desviacion[i]:.2f}" ) 
+        return "\n".join(resultado)
+    def alumnos_reprobados(self):
+        cantidad = np.sum(self.cali < 70, axis=0) 
+        resultado = []  
+        for i, materia in enumerate(self.materias): 
+            resultado.append( f"{materia}: {cantidad[i]} alumnos reprobados" ) 
+        return "\n".join(resultado)
+    def reemplazar_menores_60(self): 
+        self.cali[self.cali < 60] = 0 
+        return self.cali
+    def transpuesta(self): 
+        return self.cali.T
+    def multiplicacion(self): 
+        return np.matmul(self.cali, self.cali.T)
+    def diagonal_traza(self): 
+        matriz = self.multiplicacion() 
+        diagonal = np.diag(matriz) 
+        traza = np.trace(matriz) 
+        return diagonal, traza
+    def reporte_estadistico(self): 
+        promedio_alumnos = np.mean(self.cali, axis=1) 
+        promedio_materias = np.mean(self.cali, axis=0) 
+        maximo = np.max(self.cali, axis=0) 
+        minimo = np.min(self.cali, axis=0) 
+        desviacion = np.std(self.cali, axis=0) 
+        reprobados = np.sum(self.cali < 70, axis=0) 
+        return ( "\n========== REPORTE ESTADÍSTICO ==========\n" 
+                f"Promedio general: {np.mean(self.cali):.2f}\n" 
+                f"Calificación general máxima: {np.max(self.cali)}\n" 
+                f"Calificación general mínima: {np.min(self.cali)}\n" 
+                f"Desviación estándar general: {np.std(self.cali):.2f}\n" 
+                f"Total de calificaciones: {self.cali.size}\n" 
+                f"Promedio más alto de alumno: {np.max(promedio_alumnos):.2f}\n" 
+                f"Promedio más bajo de alumno: {np.min(promedio_alumnos):.2f}\n" "\nPromedios por materia:\n" 
+                f"{promedio_materias}\n" "\nMáximas por materia:\n" 
+                f"{maximo}\n" "\nMínimas por materia:\n" 
+                f"{minimo}\n" "\nDesviación estándar por materia:\n"
+                f"{desviacion}\n" "\nAlumnos reprobados por materia:\n" 
+                f"{reprobados}\n" )
+promedio =Promedios(calificaciones)
 print(promedio.alumno())
 print("-"*55)
 print(promedio.materia())
+print("-"*55)
+print(promedio.cali_max_o_min())
+print("-"*55)
+print(promedio.alumnos_destacados())
+print("-"*55)
+print(promedio.materias_reprobadas())
+print("-"*55)
+print(promedio.ordenar_alumnos())
+print("-"*55)
+print(promedio.desviacion_estandar())
+print("-"*55)
+print(promedio.alumnos_reprobados())
+print("-"*55)
+print(promedio.reemplazar_menores_60())
+print("-"*55)
+print(promedio.transpuesta())
+print("-"*55)
+print(promedio.multiplicacion())
+print("-"*55)
+print(promedio.diagonal_traza())
+print("-"*55)
+print(promedio.reporte_estadistico())
 print("-"*55)
