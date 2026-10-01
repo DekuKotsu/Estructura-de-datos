@@ -5,21 +5,21 @@ os.system("cls")
 # adaptar el codigo para numeros negativos
 def factorial(n):
     if(n == 0):
-        return 1
+        return 1 #aqui retornara 1 si el numero es 0
     else:
-        return n * factorial(n-1)
+        return n * factorial(n-1) #aqui se llama a la funcion de forma recursiva
 
 def factorial_sin_recursividad(n):
     fac=1
     for i in range(1, n+1):
-        fac *= i
+        fac *= i #aqui se calcula el factorial de forma no recursiva
     return f"Calcula de factorial de {n}! sin recusividad: {fac}"
 
 def fibonacci(n):
     if (n ==0 or n==1): 
-        return n
+        return n #retornara el numero dado si es 0 o 1
     else:
-        return fibonacci(n-1) + fibonacci(n-2)
+        return fibonacci(n-1) + fibonacci(n-2) #aqui se llama a la funcion de forma recursiva para calcular el fibonacci
 
 def fibonacci_sin_recursividad(n):
     a = 0
