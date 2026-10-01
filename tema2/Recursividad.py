@@ -1,4 +1,5 @@
 #factorial y figonazi con recursividad
+#Practica1
 import os, math
 os.system("cls")
 # adaptar el codigo para numeros negativos
