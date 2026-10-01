@@ -38,4 +38,4 @@ print(f"El factorial de {n}! con math es: {math.factorial(n)}")
 print(fibonacci(n))
 print(fibonacci_sin_recursividad(n)) 
 print(f"El fibonacci de {n} con math es: {math.factorial(n)}")
-# en la pagina 24 hay estan las tareas tenemos que agarrrar 
+# en la pagina 24 hay estan las tareas tenemos que agarrar 8 problemas pero de forma si son pares o impares y de forma recursiva y no recursiva
