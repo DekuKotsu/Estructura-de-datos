@@ -19,8 +19,8 @@ print("Multiplicacion matricial")
 #multiplicacion matricial
 print(A @ B)
 #con numpy se puede hacer la multiplicacion matricial de dos maneras
-#print(np.matmul(A, B))
-#print(np.dot(A, B))
+print(np.matmul(A, B))
+print(np.dot(A, B))
 v1 = np.array([1, 2, 3])
 v2 = np.array([4, 5, 6])
 #producto punto
@@ -36,6 +36,9 @@ print(f"Inversa de la matriz A: {np.linalg.inv(A)}")
 print(f"Inversa de la matriz B: {np.linalg.inv(B)}")
 #Concepto, si multiplicamos la inversa por la identidad nos da la matriz original
 #queda pendiente A =A^-1 * I
+print(A @ np.linalg.inv(A))
+print("Matriz identidad:")
+print(np.eye(3))
 #Rango de una matriz 
 print(f"Rango de la matriz A: {np.linalg.matrix_rank(A)}")
 print(f"Rango de la matriz B: {np.linalg.matrix_rank(B)}")
@@ -52,7 +55,8 @@ los valores se tienen que crear una matriz de 2x2
 C = np.array([[2,1], [1,3]])
 v3 = np.array([5,6])
 x = np.linalg.solve(C,v3)
-print(f"La solucion del sistemas de ecuaciones es {x}")
+print(f"La solucion del sistemas de ecuaciones es {x[0]}")
+print(f"La solucion del sistemas de ecuaciones es {x[1]}")
 """
 Proponer un sistemas de ecuacion de 3x3 y hayar la solucion 
 El resultado debe decir
@@ -60,3 +64,15 @@ El resultado debe decir
 "La solucion de y es:"
 "La solucion de z es:"
 """
+"""
+x + y + z= 8
+x-2y+z=4
+x+y-z=-4
+"""
+B =np.array([[1,1,1], [1,-2,1], [1,1,-1]])
+v4 =np.array([8,4,-4])
+X = np.linalg.solve(B,v4)
+print(f"La solucion del sistemas de ecuaciones de 3x3 es {X[0]:.2f}")
+print(f"La solucion del sistemas de ecuaciones de 3x3 es {X[1]:.2f}")
+print(f"La solucion del sistemas de ecuaciones de 3x3 es {X[2]:.2f}")
+

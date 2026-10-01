@@ -16,13 +16,7 @@ for i in range(n):
     x2 += pow(X[i],2)
     y2 += pow(Y[i],2)
 
-num = n*xy-X_suma*Y_suma
-den = math.sqrt(
-    (n * x2 - X_suma ** 2) *
-    (n * y2 - Y_suma ** 2)
-)
-#coeficiente de correlacion
-r = num/den
+r= np.corrcoef(X,Y)[0,1]
 r2 = pow(r,2)
 #prueba de valor estadistico
 t=((r*math.sqrt(n-2)/math.sqrt(1-r2)))

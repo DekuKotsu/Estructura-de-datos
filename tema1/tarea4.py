@@ -1,5 +1,5 @@
 #Calificacion de 30 alumnos de 6 materias
-import os, random
+import os
 import numpy as np
 os.system("cls")
 calificaciones = np.random.randint(0,101, (30,6))
@@ -96,7 +96,7 @@ class Promedios:
         for i, materia in enumerate(self.materias): 
             resultado.append( f"{materia}: {cantidad[i]} alumnos reprobados" ) 
         return "\n".join(resultado)
-    def reemplazar_menores_60(self): 
+    def reemplazar_60(self): 
         self.cali[self.cali < 60] = 0 
         return self.cali
     def transpuesta(self): 
@@ -128,6 +128,7 @@ class Promedios:
                 f"{minimo}\n" "\nDesviación estándar por materia:\n"
                 f"{desviacion}\n" "\nAlumnos reprobados por materia:\n" 
                 f"{reprobados}\n" )
+print(calificaciones)
 promedio =Promedios(calificaciones)
 print(promedio.alumno())
 print("-"*55)
@@ -145,7 +146,7 @@ print(promedio.desviacion_estandar())
 print("-"*55)
 print(promedio.alumnos_reprobados())
 print("-"*55)
-print(promedio.reemplazar_menores_60())
+print(promedio.reemplazar_60())
 print("-"*55)
 print(promedio.transpuesta())
 print("-"*55)
