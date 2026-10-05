@@ -32,3 +32,14 @@ else:
     print("-" * 30)
     print(f"Combinaciones: {resultado_combinaciones}")
     print(f"Permutaciones: {resultado_permutaciones}")
+
+""" 
+En el fundamento teorico se va aponer una combinacion y permutacion 
+como ejemplo
+definicion de combinacion y permutacion formula de combinacion y permutacion
+calculo de convinaciones de 3 y 2
+Las tareas son 8
+"""
+#git add .
+#git commit -m "Practica2"
+#git push
