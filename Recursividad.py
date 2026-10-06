@@ -45,12 +45,12 @@ try: #Es para capturar el error de valor negativo
         raise ValueError("El numero debe ser positivo") #si el numero es negativo se lanza un error 
     else:
         print("Factorial")
-        print(factorial(n))
+        print(f"El factorial de {n}! es: {factorial(n)} con recursividad")
         print(factorial_sin_recursividad(n))
         print(f"El factorial de {n}! con math es: {math.factorial(n)}")
         print("-"*50)
         print("Fiboncci")
-        print(fibonacci(n))
+        print(f"El fibonacci de {n} es: {fibonacci(n)} con recursividad")
         print(fibonacci_sin_recursividad(n)) 
         print(f"El fibonacci de {n} con math es: {math.factorial(n)}")
 except ValueError:
