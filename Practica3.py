@@ -30,7 +30,7 @@ def buscar_camino(fila, columna): #va hacer funcion recursiva
     if visitados[fila][columna]: #si ya lo visitaron
         return False
     visitados[fila][columna]= True #va regresar verdadero si ya lo piso 
-    camino.append(fila, columna)
+    camino.append((fila,columna))
     if fila ==filas-1 and columna==columnas-1: #para saber si estoy al final 
         return True
     if buscar_camino(fila+1, columna): #abajo
@@ -43,3 +43,11 @@ def buscar_camino(fila, columna): #va hacer funcion recursiva
         return True
     camino.pop() #quita el elemento del camino
     return False
+
+if (buscar_camino(0,0)) :
+    print("Camino encontrado!")
+    for paso in camino:
+        print(paso)
+    print(f"Total de pasos: {len(camino)-1}")
+else:
+    print("No se encontro camino") 
