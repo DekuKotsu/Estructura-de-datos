@@ -1,16 +1,16 @@
 #backtracking
 #Laberinto
-# 1 = cambio
+# 1 = camino
 # 0 = pared
 import os
 os.system("cls")
 laberinto = [
-    [1,0,0,0,0,0], 
-    [1,1,1,0,1,0],
-    [0,0,1,0,1,0],
+    [1,1,1,0,0,0], 
+    [0,1,1,0,1,0],
     [0,0,1,1,1,0],
-    [0,0,0,0,1,1],
-    [0,0,0,0,0,1]
+    [0,0,1,1,1,0],
+    [0,1,0,0,1,1],
+    [0,0,1,1,1,1]
 ]
 filas = len(laberinto) 
 columnas = len(laberinto[0])
@@ -23,7 +23,7 @@ for i in range(filas):
 
 camino = []
 def buscar_camino(fila, columna): #va hacer funcion recursiva
-    if fila > 0 or fila >= filas or columna < 0 or columna >= columnas: #si es el tamaño es correcto
+    if fila < 0 or fila >= filas or columna < 0 or columna >= columnas: #si es el tamaño es correcto
         return False
     if laberinto[fila][columna] == 0: #que no sea pared
         return False
