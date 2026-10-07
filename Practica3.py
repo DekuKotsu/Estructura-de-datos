@@ -23,7 +23,7 @@ for i in range(filas):
 
 camino = []
 def buscar_camino(fila, columna): #va hacer funcion recursiva
-    if fila > 0 or fila >= filas or columna < 0 or columna >= columnas: #si es el tamño es correcto
+    if fila > 0 or fila >= filas or columna < 0 or columna >= columnas: #si es el tamaño es correcto
         return False
     if laberinto[fila][columna] == 0: #que no sea pared
         return False
@@ -32,5 +32,14 @@ def buscar_camino(fila, columna): #va hacer funcion recursiva
     visitados[fila][columna]= True #va regresar verdadero si ya lo piso 
     camino.append(fila, columna)
     if fila ==filas-1 and columna==columnas-1: #para saber si estoy al final 
-        pass
-
+        return True
+    if buscar_camino(fila+1, columna): #abajo
+        return True
+    if buscar_camino(fila, columna+1): #derecha
+        return True
+    if buscar_camino(fila-1, columna): #arriba
+        return True
+    if buscar_camino(fila, columna-1): #izquierda
+        return True
+    camino.pop() #quita el elemento del camino
+    return False
