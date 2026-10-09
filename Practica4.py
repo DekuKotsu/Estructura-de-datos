@@ -1,4 +1,3 @@
-#N Reinas
 """ 
 Crear un tablero en el que las reinas no se coman entre si 
 """
