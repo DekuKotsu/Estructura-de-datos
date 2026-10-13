@@ -24,7 +24,6 @@ tamanio: {self.__tamanio}
 pdatos= Stack()
 ppar = Stack()
 pimpar = Stack()
-
-print(pdatos)
-print(ppar)
-print(pimpar)
+print(f"Tamaño pila {pdatos.obtener_tamanio()}")
+print(f"Tamaño pila {ppar.obtener_tamanio()}")
+print(f"Tamaño pila {pimpar.obtener_tamanio()}")
