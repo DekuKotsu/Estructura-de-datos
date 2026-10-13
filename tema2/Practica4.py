@@ -1,6 +1,8 @@
 """ 
 Crear un tablero en el que las reinas no se coman entre si 
 """
+import os 
+os.system("cls")
 n = int(input("Ingrese el tamaño del tablero: "))
 tablero =[-1]*n
 print(tablero)
