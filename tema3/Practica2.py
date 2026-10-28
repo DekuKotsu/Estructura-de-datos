@@ -35,3 +35,5 @@ while True:
     else:
         print("Opcion no valida")
 
+"el problema 10 de las colas en la pagina 95 esta es la tarea 2"
+
