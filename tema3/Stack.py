@@ -1,7 +1,5 @@
-
 class nodoStack(object):
     info, sig = None, None
-
 
 class Stack(object):
     def __init__(self):
