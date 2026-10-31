@@ -1,5 +1,5 @@
 import os
-from Queue import Queue 
+from Queue import Queue #la importacion de otro archivo y su clase 
 os.system("cls")
 cola = Queue()
 while True:
@@ -22,11 +22,13 @@ while True:
         print("Nombre añadido a la cola")
     elif op == 2:
         cola.desencolar()
-
+        print("Cliente atendido con exito")
     elif op ==3:
-        pass
+        print("Personas en la fila:")
+        cola.mostrar_elementos()
     elif op == 4:
-        pass
+        print("Siguiente cliente: ")
+        print(cola.en_frente())
     elif op == 5:
         print(f"El total de clientes en espera es: {cola.obtener_tamanio()}")
     elif op == 6:
