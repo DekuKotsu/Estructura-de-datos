@@ -17,7 +17,7 @@ while True:
         continue #Para que continue el programa desde el inicio
 
     if op == 1:
-        nom = input("Ingresa el nombre del cliente ")
+        nom = input("Ingresa el nombre del cliente: ")
         cola.en_colar(nom)
         print("Nombre añadido a la cola")
     elif op == 2:
