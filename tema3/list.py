@@ -52,9 +52,52 @@ class ListasEnlazadas:
             nuevo.siguiente = aux.siguiente
             aux.siguiente = nuevo
             self.tam += 1
+    def primer_elemento(self):
+        if self.lista_void():
+            return "none"
+        else:
+            return self.cabeza.dato 
+    def ultimo_elemento(self):
+        if self.lista_void():
+            return "none"
+        else:
+            aux = self.cabeza
+            while aux.siguiente is not None:
+                aux = aux.siguiente
+            return aux.dato
+    def limpiar(self):
+        self.cabeza = None
+        self.tam = 0
+
+    def invertir(self):
+        if self.lista_void():
+            return "La lista esta vacia"
+        else:
+            aux = self.cabeza
+            prev = None
+            while aux is not None:
+                next_node = aux.siguiente
+                aux.siguiente = prev
+                prev = aux
+                aux = next_node
+            self.cabeza = prev
+    def contar_elementos(self, dato):
+        if self.lista_void():
+            return 0
+        else:
+            aux = self.cabeza
+            contador = 0
+            while aux is not None:
+                if aux.dato == dato:
+                    contador += 1
+                aux = aux.siguiente
+            return contador
+        
     def __str__(self):
         return f"""
-
+anexar eliminar al inicio, al final y en medio, buscar un elemento, modificar un elemento
+tarea = investigar que son y una lista doblemente enlazada
+que son las listas circulares 
 """
 
 
@@ -67,3 +110,11 @@ lista.insertar_final(4)
 lista.mostrar()
 lista.insertar_medio(10, 1)
 lista.mostrar()
+print(f"El primer elemento es: {lista.primer_elemento()}")
+print(f"El ultimo elemento es: {lista.ultimo_elemento()}")
+lista.mostrar()
+lista.invertir()
+lista.mostrar()
+lista.insertar_final(3)
+lista.mostrar()
+print(f"El numero de elementos es: {lista.contar_elementos(3)}")
