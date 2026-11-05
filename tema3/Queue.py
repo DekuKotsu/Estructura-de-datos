@@ -14,16 +14,18 @@ class Queue(object):
 
     def __str__(self):
         return f"Tamaño: {self.tamanio}"
+
     def cola_vacia(self):
         return self.frente is None
+
     def en_frente(self):
         if self.frente is not None:
             return self.frente.info
         return None
-    
+
     def obtener_tamanio(self):
         return self.tamanio
-    
+
     def en_colar(self, dato):
         nodo = nodoCola()   
         nodo.info = dato
@@ -45,7 +47,7 @@ class Queue(object):
         if self.frente is None:
             self.final = None
         return x
-    
+
     def buscar(self, dato):
         actual = self.frente
         posicion = 1

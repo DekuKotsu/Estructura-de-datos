@@ -95,4 +95,3 @@ class EditorTexto:
 if __name__ == "__main__":
     editor = EditorTexto()
     editor.ejecutar()
-
