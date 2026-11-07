@@ -43,7 +43,7 @@ def promedio(lista):
     return suma / len(lista)
 
 def mediana(lista):
-    lista.sort() # el sort ordena la lista de menor a mayor y no necesita una varaible auxiliar
+    lista.sort() # el sort ordena la lista de menor a mayor y no necesita una varaible auxiliar_
     if len(lista) % 2 == 0:
         aux = len(lista) // 2
         med =(lista[aux] + lista[aux - 1]) / 2
