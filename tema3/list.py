@@ -81,6 +81,7 @@ class ListasEnlazadas:
                 prev = aux
                 aux = next_node
             self.cabeza = prev
+
     def contar_elementos(self, dato):
         if self.lista_void():
             return 0
@@ -92,12 +93,14 @@ class ListasEnlazadas:
                     contador += 1
                 aux = aux.siguiente
             return contador
+
     def eleminar_inicio(self):
         if self.lista_void():
             return "La lista esta vacia"
         else:
             self.cabeza = self.cabeza.siguiente
             self.tam -= 1
+
     def eliminar_final(self):
         if self.lista_void():
             return "La lista esta vacia"
@@ -110,6 +113,7 @@ class ListasEnlazadas:
                     aux = aux.siguiente
                 aux.siguiente = None
             self.tam -= 1
+
     def eliminar_medio(self, posicion):
         if self.lista_void():
             return "La lista esta vacia"
@@ -123,6 +127,7 @@ class ListasEnlazadas:
                 aux = aux.siguiente
             aux.siguiente = aux.siguiente.siguiente
             self.tam -= 1
+
     def modificar_elemento(self, posicion, nuevo_dato):
         if self.lista_void():
             return "La lista esta vacia"
@@ -132,7 +137,23 @@ class ListasEnlazadas:
         for _ in range(posicion):
             aux = aux.siguiente
         aux.dato = nuevo_dato
-    
+
+    def eliminar_elemento(self, dato):
+        if self.lista_void():
+            return "La lista esta vacia"
+        aux = self.cabeza
+        prev = None
+        while aux is not None:
+            if aux.dato == dato:
+                if prev is None:
+                    self.cabeza = aux.siguiente
+                else:
+                    prev.siguiente = aux.siguiente
+                self.tam -= 1
+                return
+            prev = aux
+            aux = aux.siguiente
+        return "Elemento no encontrado"
 """
 anexar eliminar al inicio, al final y en medio, buscar un elemento, modificar un elemento
 investigar que son y una lista doblemente enlazada
