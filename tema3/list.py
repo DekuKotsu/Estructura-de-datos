@@ -135,8 +135,8 @@ class ListasEnlazadas:
     
 """
 anexar eliminar al inicio, al final y en medio, buscar un elemento, modificar un elemento
-tarea = investigar que son y una lista doblemente enlazada
-que son las listas circulares 
+investigar que son y una lista doblemente enlazada
+que son las listas circulares  y un ejemplo
 """
 lista = ListasEnlazadas()
 lista.insertar_inicio(3)
