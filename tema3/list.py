@@ -92,15 +92,52 @@ class ListasEnlazadas:
                     contador += 1
                 aux = aux.siguiente
             return contador
-        
-    def __str__(self):
-        return f"""
+    def eleminar_inicio(self):
+        if self.lista_void():
+            return "La lista esta vacia"
+        else:
+            self.cabeza = self.cabeza.siguiente
+            self.tam -= 1
+    def eliminar_final(self):
+        if self.lista_void():
+            return "La lista esta vacia"
+        else:
+            aux = self.cabeza
+            if aux.siguiente is None:
+                self.cabeza = None
+            else:
+                while aux.siguiente.siguiente is not None:
+                    aux = aux.siguiente
+                aux.siguiente = None
+            self.tam -= 1
+    def eliminar_medio(self, posicion):
+        if self.lista_void():
+            return "La lista esta vacia"
+        if posicion < 0 or posicion >= self.tam:
+            return "Posicion fuera de rango"
+        if posicion == 0:
+            self.eleminar_inicio()
+        else:
+            aux = self.cabeza
+            for _ in range(posicion - 1):
+                aux = aux.siguiente
+            aux.siguiente = aux.siguiente.siguiente
+            self.tam -= 1
+    def modificar_elemento(self, posicion, nuevo_dato):
+        if self.lista_void():
+            return "La lista esta vacia"
+        if posicion < 0 or posicion >= self.tam:
+            return "Posicion fuera de rango"
+        aux = self.cabeza
+        for _ in range(posicion):
+            aux = aux.siguiente
+        aux.dato = nuevo_dato
+    
+"""
 anexar eliminar al inicio, al final y en medio, buscar un elemento, modificar un elemento
 tarea = investigar que son y una lista doblemente enlazada
 que son las listas circulares 
 """
-
-
 lista = ListasEnlazadas()
 lista.insertar_inicio(3)
 lista.insertar_inicio(5)
