@@ -42,7 +42,7 @@ def medir_memoria(funcion, n):
 try: #Es para capturar el error de valor negativo
     n = int(input("Introduce un numero entero: "))
     if n < 0:
-        raise ValueError("El numero debe ser positivo") #si el numero es negativo se lanza un error 
+        raise ValueError("El numero debe ser positivo") #si el numero es negativo se lanza un error_
     else:
         print("Factorial")
         print(f"El factorial de {n}! es: {factorial(n)} con recursividad")

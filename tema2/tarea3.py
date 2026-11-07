@@ -24,3 +24,4 @@ if resultado:
 else:
     print(f"El valor {valor} no se encuentra en la lista.")
 print(resultado)
+
