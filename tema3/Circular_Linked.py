@@ -1,4 +1,5 @@
-import os 
+import os
+import random 
 os.system("cls")
 class Nodo:
     def __init__(self, dato):
@@ -43,8 +44,8 @@ class CircularLinkedList:
         self.tam += 1
         return f"Elemento insertado: {dato}"
 
-    def mostrar(self, pasos = 10):
-        actual = self.cabeza    
+    def mostrar(self, pasos=10): 
+        actual = self.cabeza 
         contador = 0
         while actual is not None and contador < pasos:
             print(f"{actual.dato} -> ", end="")
@@ -94,21 +95,61 @@ class CircularLinkedList:
             posicion = 0
             while True:
                 if aux.dato == dato:
-                    return f"\n Elemento {dato} encontrado en la posicion {posicion}"
+                    return f"Elemento {dato} encontrado en la posicion {posicion}"
                 aux = aux.siguiente
                 posicion += 1
                 if aux == self.cabeza:
                     break
             return f"Elemento {dato} no encontrado en la lista"
 
+    def invertir(self):
+        if self.lista_void():
+            return "La lista esta vacia"
+        else:
+            prev = None
+            current = self.cabeza
+            next_node = None
+            first_node = self.cabeza
+            while True:
+                next_node = current.siguiente
+                current.siguiente = prev
+                prev = current
+                current = next_node
+                if current == first_node:
+                    break
+            self.cabeza.siguiente = prev
+            self.cabeza = prev
+
+    def contar_elementos(self, dato):
+        if self.lista_void():
+            return 0
+        else:
+            aux = self.cabeza
+            contador = 0
+            while True:
+                if aux.dato == dato:
+                    contador += 1
+                aux = aux.siguiente
+                if aux == self.cabeza:
+                    break
+            return contador
+
 circular_list = CircularLinkedList()
-for i in range(1, 6):
-    circular_list.insertar_inicio(i)
+rango = random.randint(1, 10)
+for i in range(rango):
+    numero = random.randint(1, 100)
+    circular_list.insertar_inicio(numero)
+print(circular_list.tamanio())
 circular_list.mostrar(6)
 circular_list.insertar_final(6)
-circular_list.mostrar(7)
+circular_list.mostrar(10)
 circular_list.insertar_medio(99, 3)
 circular_list.mostrar(8)
 print(circular_list.buscar(99))
-circular_list.buscar(100)
-circular_list.limpiar()
+print(circular_list.buscar(100))
+print(f"El numero de elementos de 99 es: {circular_list.contar_elementos(99)}")
+print(circular_list.primer_elemento())
+print(circular_list.ultimo_elemento())
+circular_list.invertir()
+circular_list.mostrar(10)
+#circular_list.limpiar()

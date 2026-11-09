@@ -69,21 +69,22 @@ class Queue(object):
             print("La cola esta vacia")
             return
         while actual is not None:
-            print(f"|{actual.info}|")
+            print(f"|{actual.info}|", end="")
             actual = actual.sig
 
 
 cola1 = Queue()
-#print(cola1)
-#    print("Cola vacia")
-#else:
-#    print("Contiene datos")
 cola1.en_colar(3)
 cola1.en_colar(5)
 cola1.en_colar(4)
-print(f"Tamaño de la cola: {cola1.obtener_tamanio()}")
-print(f"{cola1.desencolar()}")
-print(f"El dato que buscas es{3} y esta en la posicion{cola1.buscar(2)}")
-#print(cola1.limpiar())
-#print(f"Tamaño de la cola: {cola1.obtener_tamanio()}")
+print(cola1.cola_vacia())
+print(cola1.en_frente())
+print(cola1.obtener_tamanio())
+cola1.desencolar()
+print(f"Tamaño después de desencolar: {cola1.obtener_tamanio()}")
+print(f"Posición del elemento 5: {cola1.buscar(5)}")
+print(f"Se a limpiado la cola: {cola1.limpiar()}")
+cola1.en_colar(7)
+cola1.en_colar(9)
+cola1.en_colar(2)
 cola1.mostrar_elementos()

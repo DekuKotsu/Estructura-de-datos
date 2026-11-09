@@ -11,15 +11,19 @@ class ListasEnlazadas:
     def __init__(self):
         self.cabeza = None
         self.tam = 0
+
     def insertar_inicio(self, dato):
         nuevo = Nodo(dato)
         nuevo.siguiente = self.cabeza
         self.cabeza = nuevo
         self.tam += 1
+
     def tamanio(self):
         return f"El tamanio de la lista es: {self.tam}"
+
     def lista_void(self):
         return self.cabeza is None
+
     def insertar_final(self, dato):
         nuevo = Nodo(dato)
         if self.lista_void():
@@ -30,6 +34,7 @@ class ListasEnlazadas:
                 aux= aux.siguiente
             aux.siguiente = nuevo
         self.tam+=1
+
     def mostrar(self):
         if self.lista_void():
             return "La lista esta vacia"
@@ -39,6 +44,7 @@ class ListasEnlazadas:
                 print(f"{aux.dato} -> ", end="", )
                 aux = aux.siguiente
             print("None")
+
     def insertar_medio(self,dato, posicion):
         if posicion < 0 or posicion > self.tam:
             return "Posicion fuera de rango"
@@ -52,11 +58,13 @@ class ListasEnlazadas:
             nuevo.siguiente = aux.siguiente
             aux.siguiente = nuevo
             self.tam += 1
+
     def primer_elemento(self):
         if self.lista_void():
             return "none"
         else:
             return self.cabeza.dato 
+
     def ultimo_elemento(self):
         if self.lista_void():
             return "none"
@@ -65,6 +73,7 @@ class ListasEnlazadas:
             while aux.siguiente is not None:
                 aux = aux.siguiente
             return aux.dato
+
     def limpiar(self):
         self.cabeza = None
         self.tam = 0
