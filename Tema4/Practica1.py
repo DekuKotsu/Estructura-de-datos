@@ -82,16 +82,17 @@ class ArbolBinario:
             self.nodo_internos(nodo.izquierdo, internos)
             self.nodo_internos(nodo.derecho, internos)
         return internos
+    
 # Crear árbol
 arbol = ArbolBinario()
 
 # Insertar datos
-arbol.insertar(5)
-arbol.insertar(3)
-arbol.insertar(7)
-arbol.insertar(2)
-arbol.insertar(6)
-arbol.insertar(8)
+arbol.insertar("A")
+arbol.insertar("B")
+arbol.insertar("M")
+arbol.insertar("C")
+arbol.insertar("N")
+arbol.insertar("")
 arbol.insertar(4)
 arbol.insertar(10)
 print("Altura del árbol:", arbol.altura(arbol.raiz))
@@ -106,3 +107,4 @@ print("Nodos", arbol.contar_nodos(arbol.raiz))
 print("Hojas:", arbol.contar_hojas(arbol.raiz))
 print("Obtener Hojas:", arbol.obtener_hojas(arbol.raiz))
 print("obtener nodos internos:",arbol.nodo_internos(arbol.raiz))
+#en la practica 163 hay que sacar las 3 tareas para equipos
