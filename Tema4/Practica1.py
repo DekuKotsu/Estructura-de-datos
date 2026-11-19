@@ -39,21 +39,21 @@ class ArbolBinario:
 
     def preorden(self, nodo):
         if nodo is not None:
-            self.inorden(nodo.izquierdo)
-            print(nodo.dato, end="")
-            self.inorden(nodo.derecho)
-
-    def inorden(self, nodo):
-        if nodo is not None:
-            print(f"{nodo.dato} ->", end="")
+            print(f"{nodo.dato} -> ", end="")
             self.preorden(nodo.izquierdo)
             self.preorden(nodo.derecho)
-
+    
+    def inorden(self, nodo):
+        if nodo is not None:
+            self.inorden(nodo.izquierdo)
+            print(f"{nodo.dato} -> ", end="")
+            self.inorden(nodo.derecho)
+    
     def postorden(self, nodo):
         if nodo is not None:
             self.postorden(nodo.izquierdo)
             self.postorden(nodo.derecho)
-            print(nodo.dato, end="")
+            print(f"{nodo.dato} -> ", end="")
 # Crear árbol
 arbol = ArbolBinario()
 
