@@ -50,11 +50,11 @@ try:
     plt.figure(figsize=(10,7))
     nx.draw_networkx_nodes(
         G, posiciones,
-        node_color= "lighblue",
+        node_color="lightblue",
         node_size=1800
     )
     #aristas
-    nx.draw_networkx_edge(
+    nx.draw_networkx_edges(
         G, posiciones,
         edge_color = "gray",
         width = 2
@@ -71,7 +71,7 @@ try:
     )
     arista_ruta = list(zip(ruta, ruta[1:]))
 
-    nx.draw_networkx_edge(
+    nx.draw_networkx_edges(
         G, posiciones,
         edgelist = arista_ruta,
         edge_color= "red",
