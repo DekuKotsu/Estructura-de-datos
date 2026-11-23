@@ -145,16 +145,41 @@ def informacion_dios(dios):
 def relacion_directa():
     dios1 = input("\nPrimer dios: ").strip().title()
     dios2 = input("Segundo dios: ").strip().title()
+
     if dios1 not in G or dios2 not in G:
-        print("Uno de los dioses no existe.")
+        print("Uno o ambos dioses no existen.")
         return
-    if G.has_edge(dios1, dios2):
-        datos = G.get_edge_data(dios1, dios2)
-        print("\nExiste una relacion directa:")
-        for dato in datos.values():
-            print(dios1, "->", dios2, ":", dato["relacion"])
-    else:
-        print("No existe una relacion directa entre ellos.")
+
+    print("\nRelaciones directas:")
+
+    encontrada = False
+
+    # Revisar las conexiones en ambos sentidos
+    for origen, destino in [(dios1, dios2), (dios2, dios1)]:
+
+        if G.has_edge(origen, destino):
+
+            datos = G.get_edge_data(origen, destino)
+
+            # Si es un grafo con multiples aristas
+            if G.is_multigraph:
+
+                for dato in datos.values():
+
+                    print(
+                        origen, "->", destino,
+                        ":", dato["relacion"]
+                    )
+
+                    encontrada = True
+            else:
+                print(
+                    origen, "->", destino,
+                    ":", datos["relacion"]
+                )
+                encontrada = True
+    if not encontrada:
+        print("No existe una relacion directa.")
 
 def camino_corto():
     inicio = input("\nDios de origen: ").strip().title()
@@ -270,75 +295,102 @@ def guardar_archivos():
     print("vertices.csv")
     print("aristas.csv")
 
+
+
 def dibujar():
-    posiciones = nx.spring_layout(G, seed=42, k=1.5)
-    plt.figure(figsize=(17, 12))
+
+    # Crear un grafo para representar el arbol familiar
+    D = nx.DiGraph()
+
+    D.add_nodes_from(G.nodes(data=True))
+
+    # Agregar solamente relaciones de padre y madre
+    for origen, destino, datos in G.edges(data=True):
+
+        relacion = datos["relacion"]
+
+        if relacion in ["padre", "madre"]:
+
+            D.add_edge(origen, destino, relacion=relacion)
+
+    # Organizar los dioses por generaciones
+    generaciones = [
+
+        ["Cronos", "Rea", "Tea", "Hiperion", "Metis"],
+
+        ["Zeus", "Poseidon", "Hades", "Hera",
+        "Demeter", "Hestia", "Helios", "Selene",
+        "Eos", "Leto", "Maia", "Semele"],
+
+        ["Atenea", "Apolo", "Artemisa", "Persefone",
+        "Ares", "Hefesto", "Hermes", "Dionisio"]
+
+    ]
+
+    # Asignar posiciones a cada generacion
+    posiciones = {}
+
+    for nivel, grupo in enumerate(generaciones):
+
+        # Conservar solamente los dioses existentes
+        grupo = [dios for dios in grupo if dios in D]
+
+        cantidad = len(grupo)
+
+        for i, dios in enumerate(grupo):
+
+            x = (i - (cantidad - 1) / 2) * 3
+
+            y = -nivel * 3.5
+
+            posiciones[dios] = (x, y)
+
+    # Colocar posibles dioses que no estén en las generaciones
+    restantes = [dios for dios in D.nodes if dios not in posiciones]
+
+    for i, dios in enumerate(restantes):
+
+        posiciones[dios] = (i * 3, -10.5)
+
+    # Crear ventana
+    plt.figure(figsize=(22, 14))
+
+    # Dibujar conexiones familiares
+    nx.draw_networkx_edges(
+        D,
+        posiciones,
+        edge_color="gray",
+        width=1.8,
+        arrows=False
+    )
+
+    # Dibujar vertices
     nx.draw_networkx_nodes(
-        G, posiciones,
+        D,
+        posiciones,
         node_color="lightblue",
-        node_size=1600,
+        node_size=2000,
         edgecolors="black"
     )
 
+    # Dibujar nombres
     nx.draw_networkx_labels(
-        G, posiciones,
+        D,
+        posiciones,
         font_size=9,
         font_weight="bold"
     )
 
-    padres = []
-    hermanos = []
-    parejas = []
-    etiquetas = {}
-
-    for origen, destino, datos in G.edges(data=True):
-        relacion = datos["relacion"]
-        if relacion in ["padre", "madre"]:
-            padres.append((origen, destino))
-            etiquetas[(origen, destino)] = relacion
-        elif relacion == "hermano" and origen < destino:
-            hermanos.append((origen, destino))
-            etiquetas[(origen, destino)] = relacion
-        elif relacion == "pareja" and origen < destino:
-            parejas.append((origen, destino))
-            etiquetas[(origen, destino)] = relacion
-
-    nx.draw_networkx_edges(
-        G, posiciones,
-        edgelist=padres,
-        arrows=True,
-        arrowsize=15,
-        edge_color="black"
+    plt.title(
+        "Arbol genealogico de los dioses griegos",
+        fontsize=17
     )
 
-    nx.draw_networkx_edges(
-        G, posiciones,
-        edgelist=hermanos,
-        arrows=False,
-        edge_color="gray",
-        width=1.5
-    )
-
-    nx.draw_networkx_edges(
-        G, posiciones,
-        edgelist=parejas,
-        arrows=False,
-        edge_color="red",
-        style="dashed",
-        width=2
-    )
-
-    nx.draw_networkx_edge_labels(
-        G, posiciones,
-        edge_labels=etiquetas,
-        font_size=7,
-        rotate=False
-    )
-
-    plt.title("Arbol genealogico de los dioses griegos")
     plt.axis("off")
     plt.tight_layout()
     plt.show()
+
+
 
 agregar_dioses()
 cargar_relaciones()
