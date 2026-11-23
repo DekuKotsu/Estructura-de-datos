@@ -8,6 +8,6 @@ class BubbleSort:
             for j in range(n-i-1):
                 if self.datos[j]> self.datos[j+1]:
                     aux = self.datos[j]
-                    self.datos[j] = self.datos[j*1]
+                    self.datos[j] = self.datos[j+1]
                     self.datos[j + 1] = aux
         return self.datos
