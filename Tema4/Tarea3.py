@@ -340,11 +340,6 @@ def dibujar():
     plt.tight_layout()
     plt.show()
 
-
-# ==========================================
-# MENU PRINCIPAL
-# ==========================================
-
 agregar_dioses()
 cargar_relaciones()
 
