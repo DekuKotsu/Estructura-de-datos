@@ -1,5 +1,8 @@
 import os 
+import matplotlib.pyplot as plt
+import networkx as nx
 os.system("cls")
+
 class Nodo:
     def __init__(self, dato):
         self.dato = dato
@@ -82,19 +85,101 @@ class ArbolBinario:
             self.nodo_internos(nodo.izquierdo, internos)
             self.nodo_internos(nodo.derecho, internos)
         return internos
-    
+
+
+    def agregar_nodos(self, nodo, grafo):
+        if nodo is not None:
+            grafo.add_node(nodo.dato)
+
+            if nodo.izquierdo is not None:
+                grafo.add_edge(nodo.dato, nodo.izquierdo.dato)
+                self.agregar_nodos(nodo.izquierdo, grafo)
+
+            if nodo.derecho is not None:
+                grafo.add_edge(nodo.dato, nodo.derecho.dato)
+                self.agregar_nodos(nodo.derecho, grafo)
+
+    def graficar(self):
+        grafo = nx.DiGraph()
+        self.agregar_nodos(self.raiz, grafo)
+
+        posiciones = {}
+        contador = [0]
+
+        def acomodar(nodo, nivel=0):
+            if nodo is not None:
+                acomodar(nodo.izquierdo, nivel + 1)
+                posiciones[nodo.dato] = (contador[0], -nivel)
+                contador[0] += 1
+                acomodar(nodo.derecho, nivel + 1)
+
+        acomodar(self.raiz)
+
+        plt.figure(figsize=(12, 8))
+        nx.draw(
+            grafo,
+            posiciones,
+            with_labels=True,
+            node_color="skyblue",
+            node_size=1800,
+            font_size=12,
+            font_weight="bold",
+            arrows=False
+        )
+
+        plt.axis("off")
+        plt.show()
+
+
 # Crear árbol
 arbol = ArbolBinario()
 
 # Insertar datos
-arbol.insertar("A")
-arbol.insertar("B")
-arbol.insertar("M")
-arbol.insertar("C")
-arbol.insertar("N")
-arbol.insertar("O")
-arbol.insertar("P")
-arbol.insertar("Q")
+# Crear nodos
+A = Nodo("A")
+B = Nodo("B")
+M = Nodo("M")
+C = Nodo("C")
+D = Nodo("D")
+N = Nodo("N")
+O = Nodo("O")
+E = Nodo("E")
+F = Nodo("F")
+G = Nodo("G")
+H = Nodo("H")
+P = Nodo("P")
+Q = Nodo("Q")
+I = Nodo("I")
+J = Nodo("J")
+K = Nodo("K")
+L = Nodo("L")
+
+# Conectar los nodos
+arbol.raiz = A
+
+A.izquierdo = B
+A.derecho = M
+
+B.izquierdo = C
+B.derecho = D
+
+C.izquierdo = E
+C.derecho = F
+
+F.derecho = I
+
+D.izquierdo = G
+D.derecho = H
+
+H.derecho = J
+J.derecho = K
+K.derecho = L
+
+M.izquierdo = N
+M.derecho = O
+
+O.izquierdo = P
+O.derecho = Q
 print("Altura del árbol:", arbol.altura(arbol.raiz))
 print("\n""Recorrido en preorden")
 arbol.preorden(arbol.raiz )
@@ -107,4 +192,5 @@ print("Nodos", arbol.contar_nodos(arbol.raiz))
 print("Hojas:", arbol.contar_hojas(arbol.raiz))
 print("Obtener Hojas:", arbol.obtener_hojas(arbol.raiz))
 print("obtener nodos internos:",arbol.nodo_internos(arbol.raiz))
+arbol.graficar()
 #en la practica 163 hay que sacar las 3 tareas para equipos

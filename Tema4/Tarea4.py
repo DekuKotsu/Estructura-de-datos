@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 os.system("cls")
 
 G = nx.Graph()
-
 G.add_node("Mendoza",
     codigo="MZA-123",
     latitud=-32.89,
