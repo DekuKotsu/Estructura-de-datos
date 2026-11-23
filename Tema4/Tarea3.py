@@ -343,55 +343,58 @@ def dibujar():
 agregar_dioses()
 cargar_relaciones()
 
-while True:
-    print("""\n========== MENU PRINCIPAL ==========
-    (1. Mostrar hijos de un dios")
-    (2. Informacion completa de un dios")
-    (3. Buscar relacion directa")
-    (4. Camino mas corto")
-    (5. Recorridos DFS y BFS")
-    (6. Mostrar dioses y sus madres")
-    (7. Mostrar ancestros")
-    (8. Mostrar nietos de Cronos")
-    (9. Mostrar hijos de Tea")
-    (10. Guardar vertices y aristas")
-    (11. Dibujar grafo")
-    (12. Mostrar todas las conexiones")
-    (0. Salir")""")
+def menu():
+    while True:
+        print("""\n========== MENU PRINCIPAL ==========
+        (1. Mostrar hijos de un dios")
+        (2. Informacion completa de un dios")
+        (3. Buscar relacion directa")
+        (4. Camino mas corto")
+        (5. Recorridos DFS y BFS")
+        (6. Mostrar dioses y sus madres")
+        (7. Mostrar ancestros")
+        (8. Mostrar nietos de Cronos")
+        (9. Mostrar hijos de Tea")
+        (10. Guardar vertices y aristas")
+        (11. Dibujar grafo")
+        (12. Mostrar todas las conexiones")
+        (0. Salir")""")
 
-    opcion = input("\nSelecciona una opcion: ")
-    if opcion == "1":
-        dios = input("Nombre del dios: ")
-        mostrar_hijos(dios)
-    elif opcion == "2":
-        dios = input("Nombre del dios: ")
-        informacion_dios(dios)
-    elif opcion == "3":
-        relacion_directa()
-    elif opcion == "4":
-        camino_corto()
-    elif opcion == "5":
-        recorridos()
-    elif opcion == "6":
-        mostrar_madres()
-    elif opcion == "7":
-        mostrar_ancestros()
-    elif opcion == "8":
-        nietos_cronos()
-    elif opcion == "9":
-        hijos_tea()
-    elif opcion == "10":
-        guardar_archivos()
-    elif opcion == "11":
-        dibujar()
-    elif opcion == "12":
-        for origen, destino, datos in G.edges(data=True):
-            print(
-                origen, "->", destino,
-                "Relacion:", datos["relacion"]
-            )
-    elif opcion == "0":
-        print("Programa finalizado.")
-        break
-    else:
-        print("Opcion no valida.")
+        opcion = input("\nSelecciona una opcion: ")
+        if opcion == "1":
+            dios = input("Nombre del dios: ")
+            mostrar_hijos(dios)
+        elif opcion == "2":
+            dios = input("Nombre del dios: ")
+            informacion_dios(dios)
+        elif opcion == "3":
+            relacion_directa()
+        elif opcion == "4":
+            camino_corto()
+        elif opcion == "5":
+            recorridos()
+        elif opcion == "6":
+            mostrar_madres()
+        elif opcion == "7":
+            mostrar_ancestros()
+        elif opcion == "8":
+            nietos_cronos()
+        elif opcion == "9":
+            hijos_tea()
+        elif opcion == "10":
+            guardar_archivos()
+        elif opcion == "11":
+            dibujar()
+        elif opcion == "12":
+            for origen, destino, datos in G.edges(data=True):
+                print(
+                    origen, "->", destino,
+                    "Relacion:", datos["relacion"]
+                )
+        elif opcion == "0":
+            print("Programa finalizado.")
+            break
+        else:
+            print("Opcion no valida.")
+
+menu()
