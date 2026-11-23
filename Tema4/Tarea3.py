@@ -349,20 +349,20 @@ agregar_dioses()
 cargar_relaciones()
 
 while True:
-    print("\n========== MENU PRINCIPAL ==========")
-    print("1. Mostrar hijos de un dios")
-    print("2. Informacion completa de un dios")
-    print("3. Buscar relacion directa")
-    print("4. Camino mas corto")
-    print("5. Recorridos DFS y BFS")
-    print("6. Mostrar dioses y sus madres")
-    print("7. Mostrar ancestros")
-    print("8. Mostrar nietos de Cronos")
-    print("9. Mostrar hijos de Tea")
-    print("10. Guardar vertices y aristas")
-    print("11. Dibujar grafo")
-    print("12. Mostrar todas las conexiones")
-    print("0. Salir")
+    print("""\n========== MENU PRINCIPAL ==========
+    (1. Mostrar hijos de un dios")
+    (2. Informacion completa de un dios")
+    (3. Buscar relacion directa")
+    (4. Camino mas corto")
+    (5. Recorridos DFS y BFS")
+    (6. Mostrar dioses y sus madres")
+    (7. Mostrar ancestros")
+    (8. Mostrar nietos de Cronos")
+    (9. Mostrar hijos de Tea")
+    (10. Guardar vertices y aristas")
+    (11. Dibujar grafo")
+    (12. Mostrar todas las conexiones")
+    (0. Salir")""")
 
     opcion = input("\nSelecciona una opcion: ")
     if opcion == "1":
@@ -391,15 +391,12 @@ while True:
         dibujar()
     elif opcion == "12":
         for origen, destino, datos in G.edges(data=True):
-
             print(
                 origen, "->", destino,
                 "Relacion:", datos["relacion"]
             )
-
     elif opcion == "0":
         print("Programa finalizado.")
         break
-
     else:
         print("Opcion no valida.")
