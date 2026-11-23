@@ -1,3 +1,4 @@
+import random
 class BubbleSort:
     def __init__(self, datos):
         self.datos = datos
@@ -11,3 +12,13 @@ class BubbleSort:
                     self.datos[j] = self.datos[j+1]
                     self.datos[j + 1] = aux
         return self.datos
+
+numero = [8, 2, 5, 9, 3, 1, 7]
+bubble = BubbleSort(numero)
+print(bubble.ordenar())
+
+nombres = ["Carlos", "Ana", "Pedro", "Luis", "Beatriz"]
+bubble1 = BubbleSort(nombres)
+print(bubble1.ordenar())
+
+#investigar la complegidad computacional de big O del metodo de la burbuja
