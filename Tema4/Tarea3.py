@@ -353,7 +353,7 @@ def dibujar():
         posiciones[dios] = (i * 3, -10.5)
 
     # Crear ventana
-    plt.figure(figsize=(22, 14))
+    plt.figure(figsize=(10, 7))
 
     # Dibujar conexiones familiares
     nx.draw_networkx_edges(
