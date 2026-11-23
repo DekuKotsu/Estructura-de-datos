@@ -219,13 +219,66 @@ def buscar_antena():
     if not encontrada:
         print("La antena no existe.")
 
+def dibujar_grafo():
+    posiciones = {
+        "BuenosAires": (-4, 2),
+        "Misiones": (-2, 3),
+        "SantaFe": (-2, 0),
+        "AntenaTGK": (-4, -2),
+        "Cordoba": (1, 0),
+        "Mendoza": (3, 3),
+        "SanLuis": (4, 0)
+    }
+
+    plt.figure(figsize=(13, 8))
+    nx.draw_networkx_nodes(
+        G, posiciones,
+        node_color="lightblue",
+        node_size=2200,
+        edgecolors="black"
+    )
+    nx.draw_networkx_edges(
+        G, posiciones,
+        edge_color="gray",
+        width=2
+    )
+
+    nx.draw_networkx_labels(
+        G, posiciones,
+        font_size=10,
+        font_weight="bold"
+    )
+
+    etiquetas = nx.get_edge_attributes(
+        G, "distancia"
+    )
+    nx.draw_networkx_edge_labels(
+        G, posiciones,
+        edge_labels=etiquetas,
+        font_size=9,
+        rotate=False,
+        bbox=dict(
+            facecolor="white",
+            edgecolor="none",
+            alpha=0.8
+        )
+    )
+
+    plt.title("Red de antenas telefonicas", fontsize=15)
+
+    plt.axis("off")
+    plt.tight_layout()
+    plt.show()
+
+
 while True:
-    print("\n========== MENU PRINCIPAL ==========")
-    print("1. Mostrar tamaño del grafo")
-    print("2. Camino mas corto (Dijkstra)")
-    print("3. Arbol de expansion minima (Prim)")
-    print("4. Buscar antena TGK-783")
-    print("0. Salir")
+    print("""\n========== MENU PRINCIPAL ==========)
+    1. Mostrar tamaño del grafo
+    2. Camino mas corto (Dijkstra)
+    3. Arbol de expansion minima (Prim)
+    4. Buscar antena TGK-783
+    5. visulizar grafo
+    0. Salir""")
     opcion = input("\nSelecciona una opcion: ")
     if opcion == "1":
         tamanio_grafo()
@@ -235,6 +288,8 @@ while True:
         arbol_minimo()
     elif opcion == "4":
         buscar_antena()
+    elif opcion =="5":
+        dibujar_grafo()
     elif opcion == "0":
         print("Programa finalizado.")
         break
