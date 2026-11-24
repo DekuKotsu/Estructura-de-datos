@@ -1,4 +1,5 @@
-import random
+import os
+os.system("cls")
 class BubbleSort:
     def __init__(self, datos):
         self.datos = datos
