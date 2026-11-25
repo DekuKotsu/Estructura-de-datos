@@ -139,6 +139,8 @@ el programa deberá mostrar un mensaje de despedida.
 #-------------------------------------------------------------------------------
 
 """ Haz un banco con 4 opciones: depositar, retirar, ver saldo , salir"""
+cuenta = 0
+ultimo_deposito =0
 
 while True:
     print("""========= MENU PRINCIPAL =========
@@ -150,8 +152,9 @@ while True:
     op=int(input("Selecciona una opcion: "))
 # if sirve para comparar 
     if op==1:
-        deposito=int(input("Ingresa la cantidad que deseas depositar: "))
-        cuenta = 0
+        deposito=int(input("Ingresa la cantidad que deseas depositar: ")) 
+        # comprar si el retiro es mayor a 0 si es 0 debe de mostrarte que esa cantidad no es valida
+        ultimo_deposito = deposito
         cuenta = cuenta +deposito
         print("Te depositaron",cuenta)
     elif op==2:
@@ -161,7 +164,13 @@ while True:
         else:
             print("Saldo retirado")
     elif op==3:
-        print(cuenta) # compara si quieres ver tu ultimo deposito o toda tu cuenta
+        # compara si quieres ver tu ultimo deposito o toda tu cuenta
+        opcion=int(input(" Selecciona una opcion: ")) # Tarea hacer otra opcion la cual sea mostrar el ultimo retiro
+        if opcion==1:
+            print("Ultimo deposito: ",ultimo_deposito)
+        else:
+            print("Estado de cuenta: ", cuenta)
+
     elif op==4:
         print("!Salir!")
         break
