@@ -20,7 +20,7 @@ class QuickSort:
             else:
                 mayores.append(i)
         return (self.ordenar(mayores) +[pivote]+ self.ordenar(menores))
-    
+
     def ordenar_lista(self, inicio, fin): # con arreglos
         if inicio < fin:
             pivote = self.__lista[fin]
