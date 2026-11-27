@@ -194,3 +194,4 @@ print("Obtener Hojas:", arbol.obtener_hojas(arbol.raiz))
 print("obtener nodos internos:",arbol.nodo_internos(arbol.raiz))
 arbol.graficar()
 #en la practica 163 hay que sacar las 3 tareas para equipos
+
