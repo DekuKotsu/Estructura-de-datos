@@ -1,6 +1,5 @@
 #Tarea timsort investigar vale 60% investigar que lenguaje ocupan timsort,
 # quien lo creo, para que lo creo, como se ocupa
-
 class RadixSort:
     def __init__(self, lista):
         self.lista = lista.copy()
