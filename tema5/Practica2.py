@@ -37,4 +37,4 @@ class QuickSort:
 lista= [3,6,8,9,7,2,10]
 quick = QuickSort(lista)
 #print(quick.ordenar(lista))
-print(quick.ordenar_lista(0,len(lista)-1))
+print(quick.ordenar_lista(0,len(lista)-1)) 
