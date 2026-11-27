@@ -34,4 +34,4 @@ radix = RadixSort(numero)
 
 print(f"lista original: {numero}")
 print(f"Lista ordenada: {radix.ordenar()}")
-#En el reporte hacer tablas para explicar el funcionamiento
+#En el reporte hacer tablas para explicar el funcionamiento 
