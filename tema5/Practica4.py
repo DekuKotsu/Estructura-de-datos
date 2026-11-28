@@ -25,10 +25,10 @@ class MergeSort:
         resultado.extend(derecha[j:])
         return resultado
 
-
-#un solo programa que incluye toda la materia
-#El lunes
 lista = [3, 9, 10, 1, 8, 7, 5, 2]
 merge = MergeSort()
 resultado = merge.ordenar(lista)
 print(f"La lista ordenada es: {resultado}")
+
+#un solo programa que incluye toda la materia
+#El lunes
